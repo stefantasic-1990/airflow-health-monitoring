@@ -331,5 +331,28 @@ services:
       airflow-init:
         condition: service_completed_successfully
 
+  statsd-exporter:
+    image: prom/statsd-exporter
+    ports:
+      - "9102:9102"
+      - "8125:8125/udp"
+    command:
+      - "--statsd.listen-udp=:8125"
+      - "--web.listen-address=:9102"
+    restart: always
+
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+    restart: always
+
 volumes:
   postgres-db-volume:
+  prometheus-data:
