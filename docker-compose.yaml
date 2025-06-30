@@ -353,13 +353,13 @@ services:
       - "--storage.tsdb.path=/prometheus"
     restart: always
 
-    grafana:
-      image: grafana/grafana-oss
-      ports:
-        - "3000:3000"
-      volumes:
-        - grafana-storage:/var/lib/grafana
-      restart: always
+  grafana:
+    image: grafana/grafana-oss
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    restart: always
 
 volumes:
   postgres-db-volume:
