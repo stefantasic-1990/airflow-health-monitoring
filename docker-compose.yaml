@@ -363,7 +363,7 @@ services:
       - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
       - ./grafana/dashboards:/var/lib/grafana/dashboards
     environment:
-      - PROMETHEUS_URL: http://prometheus:9090
+      PROMETHEUS_URL: http://prometheus:9090
     restart: always
 
 volumes:
