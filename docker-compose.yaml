@@ -359,6 +359,11 @@ services:
       - "3000:3000"
     volumes:
       - grafana-storage:/var/lib/grafana
+      - ./grafana/provisoning/datasources:/etc/grafana/provisoning/datasources
+      - ./grafana/provisoning/dashboards:/etc/grafana/provisoning/dashboards
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+    environment:
+      - PROMETHEUS_URL:http://prometheus:9090
     restart: always
 
 volumes:
