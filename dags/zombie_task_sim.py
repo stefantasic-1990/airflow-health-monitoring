@@ -13,7 +13,7 @@ def zombie_task_sim():
 
     @task
     def terminate_me():
-        print("Task started and sleeping for 30 seconds. Kill the worker container now to simulate a zombie task.")
+        print("Task started and sleeping for 60 seconds. Kill the worker container now to simulate a zombie task.")
         time.sleep(30)
 
     terminate_me()
