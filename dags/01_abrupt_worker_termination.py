@@ -3,19 +3,19 @@ from airflow.utils import timezone
 import time
 
 @dag(
-    dag_id="zombie_task_sim",
+    dag_id="01_abrupt_worker_termination",
     schedule=None,
     start_date = timezone.datetime(2025, 1, 1),
     catchup=False,
-    tags=["failure_simulation"],
+    tags=["zombie_simulation"],
 )
-def zombie_task_sim():
+def abrupt_worker_termination():
 
     @task
     def terminate_me():
         print("Task started and sleeping for 60 seconds. Kill the worker container now to simulate a zombie task.")
-        time.sleep(30)
+        time.sleep(60)
 
     terminate_me()
 
-dag = zombie_task_sim()
+dag = abrupt_worker_termination()
