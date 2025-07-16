@@ -4,14 +4,14 @@ from airflow.operators.empty import EmptyOperator
 import time
 
 @dag(
-    dag_id="01_abrupt_worker_termination",
+    dag_id="abrupt_termination_zombie",
     schedule=None,
     start_date = timezone.datetime(2025, 1, 1),
     catchup=False,
-    tags=["zombie_simulation"],
+    tags=["zombie_sim"],
     max_active_tasks=3,
 )
-def abrupt_worker_termination():
+def abrupt_termination_zombie():
 
     start = EmptyOperator(task_id="start")
 
@@ -29,4 +29,4 @@ def abrupt_worker_termination():
 
     start >> [sleeper_task_1(), sleeper_task_2()] >> end
 
-dag = abrupt_worker_termination()
+dag = abrupt_termination_zombie()
