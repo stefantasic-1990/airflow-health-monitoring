@@ -16,3 +16,7 @@ def false_positive_zombie():
         sleep_seconds=600
         print(f"Sleeping for {sleep_seconds} seconds")
         time.sleep(sleep_seconds)
+
+    long_running_task()
+
+dag=false_positive_zombie()
